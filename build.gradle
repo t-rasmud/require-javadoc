@@ -59,19 +59,21 @@ apply plugin: 'org.checkerframework'
 
 checkerFramework {
   checkers = [
-    'org.checkerframework.checker.formatter.FormatterChecker',
-    'org.checkerframework.checker.index.IndexChecker',
-    'org.checkerframework.checker.interning.InterningChecker',
-    'org.checkerframework.checker.lock.LockChecker',
-    'org.checkerframework.checker.nullness.NullnessChecker',
-    'org.checkerframework.checker.regex.RegexChecker',
-    'org.checkerframework.checker.signature.SignatureChecker'
+    // 'org.checkerframework.checker.formatter.FormatterChecker',
+    // 'org.checkerframework.checker.index.IndexChecker',
+    // 'org.checkerframework.checker.interning.InterningChecker',
+    // 'org.checkerframework.checker.lock.LockChecker',
+    // 'org.checkerframework.checker.nullness.NullnessChecker',
+    // 'org.checkerframework.checker.regex.RegexChecker',
+    // 'org.checkerframework.checker.signature.SignatureChecker'
+    'org.checkerframework.checker.determinism.DeterminismChecker'
   ]
   extraJavacArgs = [
     '-Werror',
-    '-AcheckPurityAnnotations',
+    // '-AcheckPurityAnnotations',
     '-ArequirePrefixInWarningSuppressions',
-    '-AwarnUnneededSuppressions'
+    '-AwarnUnneededSuppressions',
+    // '-AusePolyDefault'
   ]
 }
 

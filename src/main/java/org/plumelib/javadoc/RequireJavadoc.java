@@ -41,6 +41,8 @@ import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.plumelib.options.Option;
 import org.plumelib.options.Options;
 
+import org.checkerframework.checker.determinism.qual.*;
+
 /**
  * A program that issues an error for any class, constructor, method, or field that lacks a Javadoc
  * comment. Does not issue a warning for methods annotated with {@code @Override}. See documentation
@@ -92,11 +94,11 @@ public class RequireJavadoc {
    * @param args the command-line arguments; see the README file.
    */
   public static void main(String[] args) {
-    RequireJavadoc rj = new RequireJavadoc();
+    @Det RequireJavadoc rj = new RequireJavadoc();
     Options options =
         new Options(
             "java org.plumelib.javadoc.RequireJavadoc [options] [directory-or-file ...]", rj);
-    String[] remainingArgs = options.parse(true, args);
+    @Det String[] remainingArgs = options.parse(true, args);
 
     rj.setJavaFiles(remainingArgs);
 
@@ -130,7 +132,7 @@ public class RequireJavadoc {
    *
    * @param args the directories and files listed on the command line
    */
-  @SuppressWarnings("lock:methodref.receiver.invalid") // no locking here
+  @SuppressWarnings({"lock:methodref.receiver.invalid","determinism:methodref.return.invalid"}) // no locking here
   private void setJavaFiles(String[] args) {
     if (args.length == 0) {
       args = new String[] {workingDirAbsolute.toString()};
