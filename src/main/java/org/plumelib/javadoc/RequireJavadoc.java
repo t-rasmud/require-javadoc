@@ -133,7 +133,7 @@ public class RequireJavadoc {
    * @param args the directories and files listed on the command line
    */
   @SuppressWarnings({"lock:methodref.receiver.invalid",  // no locking here
-          "determinism:methodref.return.invalid"  // true positive; Object.toString not overridden: not all implementers of Path
+          "determinism:methodref.return.invalid"  // true positive; user output; Object.toString not overridden: not all implementers of Path
   })
   private void setJavaFiles(String[] args) {
     if (args.length == 0) {
