@@ -1,3 +1,14 @@
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "gradle.plugin.edu.illinois:nondex-gradle-plugin:1.1.20"
+  }
+}
+
 plugins {
   id 'java'
   id 'application'
@@ -55,6 +66,7 @@ tasks.withType(JavaCompile).configureEach {
 
 /// Checker Framework pluggable type-checking
 
+apply plugin: "edu.illinois.nondex"
 apply plugin: 'org.checkerframework'
 
 checkerFramework {
