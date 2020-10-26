@@ -37,11 +37,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
+import org.checkerframework.checker.determinism.qual.*;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.plumelib.options.Option;
 import org.plumelib.options.Options;
-
-import org.checkerframework.checker.determinism.qual.*;
 
 /**
  * A program that issues an error for any class, constructor, method, or field that lacks a Javadoc
@@ -132,8 +131,10 @@ public class RequireJavadoc {
    *
    * @param args the directories and files listed on the command line
    */
-  @SuppressWarnings({"lock:methodref.receiver.invalid",  // no locking here
-          "determinism:methodref.return.invalid"  // true positive; user output; Object.toString not overridden: not all implementers of Path
+  @SuppressWarnings({
+    "lock:methodref.receiver.invalid", // no locking here
+    "determinism:methodref.return.invalid" // true positive; user output; Object.toString not
+                                           // overridden: not all implementers of Path
   })
   private void setJavaFiles(String[] args) {
     if (args.length == 0) {
@@ -164,6 +165,7 @@ public class RequireJavadoc {
       }
     }
 
+    // All known implementations of Path have deterministic toString
     javaFiles.sort(Comparator.comparing(Object::toString));
   }
 
