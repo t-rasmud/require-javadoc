@@ -70,7 +70,7 @@ checkerFramework {
     'org.checkerframework.common.util.count.AnnotationStatistics',
   ]
   extraJavacArgs = [
-    '-Aannotations', '-Anolocations',
+    '-Aannotations', '-Anolocations', // for AnnotationStatistics
     '-Werror',
     // '-AcheckPurityAnnotations',
     '-ArequirePrefixInWarningSuppressions',
