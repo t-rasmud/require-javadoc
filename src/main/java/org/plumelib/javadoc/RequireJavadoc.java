@@ -155,9 +155,9 @@ public class RequireJavadoc {
    */
   @SuppressWarnings({
     "lock:methodref.receiver.invalid", // no locking here
+    "determinism:methodref.return.invalid" // true positive; user output; Object.toString not
+    // overridden: not all implementers of Path
   })
-  // true positive; user output; Object.toString not
-  // overridden: not all implementers of Path
   private void setJavaFiles(String[] args) {
     if (args.length == 0) {
       args = new String[] {workingDirAbsolute.toString()};
